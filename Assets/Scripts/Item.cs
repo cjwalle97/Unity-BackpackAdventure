@@ -8,7 +8,6 @@
     {
         public string Name;
         public ItemType Type;
-
     }
     public enum ItemType
     {
