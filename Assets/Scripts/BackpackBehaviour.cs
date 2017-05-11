@@ -6,7 +6,9 @@ namespace Scripts
 {
     public class BackpackBehaviour : MonoBehaviour
     {
-        private Dictionary<string, List<Item>> _backpack;
+        public BackpackConfig BagConfig;
+        private BackpackConfig _currentconfig;
+        private Dictionary<string, List<Item>> _backpack;      
 
         private bool AddToBackpack(Item item)
         {
@@ -26,7 +28,12 @@ namespace Scripts
             }
 
             //IF BACKPACK HAS ITEM ALREADY, ADD ITEM TO ALREADY EXISTING ITEMLIST
-            _backpack[itemtypekey].Add(item);
+            //  - MAKE SURE ITEM IS NOT NULL
+            if (item != null)
+            {
+                _backpack[itemtypekey].Add(item);
+                return true;
+            }
             return false;
         }
 
@@ -51,25 +58,46 @@ namespace Scripts
             return false;
         }
 
+        private bool ChangeBackpackConfig(BackpackConfig newconfig)
+        {
+            _currentconfig = newconfig;
+            return true;
+        }
+
+        private bool AddConfigToBackpack(BackpackConfig newconfig)
+        {
+            foreach(var item in newconfig.Items)
+            {
+                AddToBackpack(item);
+                return true;
+            }
+            return false;
+        }
+        
         // Use this for initialization
         void Start()
         {
-            _backpack = new Dictionary<string, List<Item>>();            
+            _backpack = new Dictionary<string, List<Item>>();
+
+            foreach (var item in BagConfig.Items)
+            {
+                AddToBackpack(item);
+            }
         }
 
         // Update is called once per frame
         void Update()
         {
-
-            //  - LOG ALL BACKPACK CONTENTS TO CONSOLE
-            //foreach(var itemtype in _backpack)
-            //{
-            //    foreach(var item in itemtype.Value)
-            //    {
-            //        Debug.Log(itemtype.Key + "(" + item.Name + ")");
-            //    }
-            //}
-
+            //-LOG ALL BACKPACK CONTENTS TO CONSOLE
+            foreach (var itemtype in _backpack)
+            {
+                foreach (var item in itemtype.Value)
+                {
+                    Debug.Log(itemtype.Key + "(" + item.Name + ")");
+                    //_currentconfig.Items.Add(item);
+                }
+            }
+           
         }
     }
 }

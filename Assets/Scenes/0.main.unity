@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf826df29f0cf2a48be951b16bbfe9c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BagConfig: {fileID: 11400000, guid: fa45c0e8b5fd2da43ad906ce74bc1471, type: 2}
 --- !u!1 &775373449
 GameObject:
   m_ObjectHideFlags: 0
