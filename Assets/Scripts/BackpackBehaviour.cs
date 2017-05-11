@@ -6,8 +6,8 @@ namespace Scripts
 {
     public class BackpackBehaviour : MonoBehaviour
     {
-        public BackpackConfig BagConfig;
-        private BackpackConfig _currentconfig;
+        public Backpack BagConfig;
+        //private Backpack _currentconfig;
         private Dictionary<string, List<Item>> _backpack;      
 
         private bool AddToBackpack(Item item)
@@ -58,13 +58,13 @@ namespace Scripts
             return false;
         }
 
-        private bool ChangeBackpackConfig(BackpackConfig newconfig)
+        private bool ChangeBackpackConfig(Backpack newconfig)
         {
-            _currentconfig = newconfig;
+            //_currentconfig = newconfig;
             return true;
         }
 
-        private bool AddConfigToBackpack(BackpackConfig newconfig)
+        private bool AddConfigToBackpack(Backpack newconfig)
         {
             foreach(var item in newconfig.Items)
             {
@@ -78,7 +78,7 @@ namespace Scripts
         void Start()
         {
             _backpack = new Dictionary<string, List<Item>>();
-
+            Instantiate(BagConfig);
             foreach (var item in BagConfig.Items)
             {
                 AddToBackpack(item);
@@ -89,14 +89,14 @@ namespace Scripts
         void Update()
         {
             //-LOG ALL BACKPACK CONTENTS TO CONSOLE
-            foreach (var itemtype in _backpack)
-            {
-                foreach (var item in itemtype.Value)
-                {
-                    Debug.Log(itemtype.Key + "(" + item.Name + ")");
-                    //_currentconfig.Items.Add(item);
-                }
-            }
+            //foreach (var itemtype in _backpack)
+            //{
+            //    foreach (var item in itemtype.Value)
+            //    {
+            //        Debug.Log(itemtype.Key + "(" + item.Name + ")");
+            //        //_currentconfig.Items.Add(item);
+            //    }
+            //}
            
         }
     }
