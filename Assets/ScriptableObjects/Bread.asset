@@ -11,7 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9e357be54cc13e4ab12e4295feff836, type: 3}
   m_Name: Bread
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Bread
   Type: 0
-  Object: {fileID: 0}
-  Recover: 0
+  Recover: 5

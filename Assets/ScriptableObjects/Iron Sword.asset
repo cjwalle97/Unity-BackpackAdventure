@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b04063a8c67f24488f86f14a54c4b3c, type: 3}
   m_Name: Iron Sword
   m_EditorClassIdentifier: 
-  Name: 
-  Type: 0
-  Attack: 0
+  Name: Iron Sword
+  Type: 1
+  Attack: 15
