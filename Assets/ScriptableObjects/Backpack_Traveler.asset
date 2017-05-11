@@ -8,8 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 142240517774857468c0af4e3d6769f9, type: 3}
   m_Name: Backpack_Traveler
-  m_EditorClassIdentifier: Assembly-CSharp:Scripts:BackpackConfig
-  BackpackName: 
-  Items: []
+  m_EditorClassIdentifier: 
+  BackpackName: Travelers Backpack
+  Items:
+  - {fileID: 11400000, guid: d313a3e7c4a395a488b1321413138cfc, type: 2}
+  - {fileID: 11400000, guid: 60c7d145ba01a9b429f17927d498b85d, type: 2}
+  - {fileID: 11400000, guid: cce8bf09d8a737241a4adc583a714aff, type: 2}
+  - {fileID: 11400000, guid: 257ecd149c6e10647966c92b42a305ad, type: 2}
