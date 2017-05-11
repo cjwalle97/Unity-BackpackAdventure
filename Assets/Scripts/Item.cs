@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
-public class _baseitem
+public class Item
 {
     public string Name;
     public ItemType Type;
