@@ -1,15 +1,19 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
-public class Item
+﻿namespace Scripts
 {
-    public string Name;
-    public ItemType Type;
+    using UnityEngine;
 
-}
-public enum ItemType
-{
-    Consumable = 0,
+    [CreateAssetMenu(fileName = "Item", menuName = "Item", order = 1)]
 
-    Permanent = 1,
+    public class Item : ScriptableObject
+    {
+        public string Name;
+        public ItemType Type;
+
+    }
+    public enum ItemType
+    {
+        Consumable = 0,
+
+        Permanent = 1,
+    }
 }
