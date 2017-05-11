@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: WoodenHelmet
   m_EditorClassIdentifier: 
   Name: Wooden Helm
-  Type: 0
+  Type: 1
   Defense: 3

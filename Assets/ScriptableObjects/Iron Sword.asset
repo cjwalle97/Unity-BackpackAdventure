@@ -8,8 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Backpack_Traveler
-  m_EditorClassIdentifier: Assembly-CSharp:Scripts:BackpackConfig
-  BackpackName: 
-  Items: []
+  m_Script: {fileID: 11500000, guid: 5b04063a8c67f24488f86f14a54c4b3c, type: 3}
+  m_Name: Iron Sword
+  m_EditorClassIdentifier: 
+  Name: Iron Sword
+  Type: 1
+  Attack: 15

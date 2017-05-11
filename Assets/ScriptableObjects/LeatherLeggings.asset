@@ -8,8 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Backpack_Traveler
-  m_EditorClassIdentifier: Assembly-CSharp:Scripts:BackpackConfig
-  BackpackName: 
-  Items: []
+  m_Script: {fileID: 11500000, guid: 0fedc3c9afbe25c41a6eb7d14cd24b15, type: 3}
+  m_Name: LeatherLeggings
+  m_EditorClassIdentifier: 
+  Name: Leather Leggings
+  Type: 1
+  Defense: 2
