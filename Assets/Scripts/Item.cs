@@ -2,7 +2,7 @@
 {
     using UnityEngine;
 
-    [CreateAssetMenu(fileName = "Item", menuName = "Item", order = 1)]
+    [CreateAssetMenu(fileName = "Item", menuName = "Item", order = 0)]
 
     public class Item : ScriptableObject
     {
