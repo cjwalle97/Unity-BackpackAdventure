@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Backpack_Combat
+  m_EditorClassIdentifier: Assembly-CSharp:Scripts:BackpackConfig
+  BackpackName: Combat Backpack
+  Items:
+  - {fileID: 11400000, guid: 60c7d145ba01a9b429f17927d498b85d, type: 2}
+  - {fileID: 11400000, guid: 5cc219d7a9536e040b74ed10ae55b5e8, type: 2}
+  - {fileID: 11400000, guid: d313a3e7c4a395a488b1321413138cfc, type: 2}
+  - {fileID: 11400000, guid: 457641a834a066e4db3d784b40fa1833, type: 2}
