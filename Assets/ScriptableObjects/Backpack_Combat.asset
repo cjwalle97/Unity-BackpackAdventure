@@ -8,12 +8,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 142240517774857468c0af4e3d6769f9, type: 3}
   m_Name: Backpack_Combat
-  m_EditorClassIdentifier: Assembly-CSharp:Scripts:BackpackConfig
+  m_EditorClassIdentifier: 
   BackpackName: Combat Backpack
   Items:
-  - {fileID: 11400000, guid: 60c7d145ba01a9b429f17927d498b85d, type: 2}
   - {fileID: 11400000, guid: 5cc219d7a9536e040b74ed10ae55b5e8, type: 2}
-  - {fileID: 11400000, guid: d313a3e7c4a395a488b1321413138cfc, type: 2}
+  - {fileID: 11400000, guid: 801b3950df5a83c47b3e2a38e7311bb3, type: 2}
+  - {fileID: 11400000, guid: f2a1d375b6e04024488d09593c4abd0a, type: 2}
+  - {fileID: 11400000, guid: 9bd5a273f0f39d04791b0b0d9fbe78cf, type: 2}
+  - {fileID: 11400000, guid: 328ce363e1cdda44da8b610563d2dc32, type: 2}
+  - {fileID: 11400000, guid: 60c7d145ba01a9b429f17927d498b85d, type: 2}
   - {fileID: 11400000, guid: 457641a834a066e4db3d784b40fa1833, type: 2}
