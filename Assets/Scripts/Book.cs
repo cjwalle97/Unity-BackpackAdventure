@@ -4,7 +4,7 @@
 
     [CreateAssetMenu(fileName = "Book", menuName = "Item/Equipment/Book",
         order = 0)]
-    public class Book : Equipment {
+    public abstract class Book : Equipment {
         public string SkillName;
     }
 }

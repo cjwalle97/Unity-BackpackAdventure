@@ -2,7 +2,7 @@
 {
     using UnityEngine;
 
-    public class Equipment : Item
+    public abstract class Equipment : Item
     {
 
     }
