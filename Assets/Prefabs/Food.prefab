@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de0b386227252642a561931fb3450a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FoodConfig: {fileID: 11400000, guid: 257ecd149c6e10647966c92b42a305ad, type: 2}
+  FoodConfig: {fileID: 0}
   _other: {fileID: 0}
 --- !u!135 &135637739321747794
 SphereCollider:

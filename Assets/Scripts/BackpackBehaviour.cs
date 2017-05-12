@@ -6,11 +6,6 @@ namespace Scripts
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.Events;
-    
-
-
-
-
 
     public class BackpackBehaviour : MonoBehaviour
     {
@@ -18,7 +13,6 @@ namespace Scripts
         public class OnItemAdd : UnityEvent<Item> { }
         public OnItemAdd onItemAdd;
         public Backpack BagConfig;
-        //private Backpack _currentconfig;        
         public List<Item> Items;
         public bool DEBUG = false;
 
@@ -31,7 +25,7 @@ namespace Scripts
 
         public bool RemoveFromBackpack(Item item)
         {
-            if(Items.Contains(item))
+            if (Items.Contains(item))
             {
                 string tmpkey = item.GetType().ToString();
                 string itemkey = tmpkey.Remove(0, 8);
@@ -48,10 +42,11 @@ namespace Scripts
         {
             foreach (var item in Items)
             {
-                string tmpkey = item.GetType().ToString();
-                string itemkey = tmpkey.Remove(0, 8);
-                Debug.Log(itemkey);
-                Instantiate(Resources.Load("RuntimePrefabs/" + itemkey), transform.position, transform.rotation);
+                //string tmpkey = item.GetType().ToString();                
+                //string itemkey = tmpkey.Remove(0, 8);
+                //string itemkey = tmpkey;
+                //Debug.Log(itemkey);
+                //Instantiate(Resources.Load("RuntimePrefabs/" + itemkey), transform.position, transform.rotation);
                 Items.Remove(item);
                 return true;
             }
@@ -79,15 +74,17 @@ namespace Scripts
             //-LOG ALL BACKPACK CONTENTS TO CONSOLE
             Items.ForEach(x => { Debug.Log(x.Name); });
         }
-        
+
         // Use this for initialization
         void Start()
         {
             Items = new List<Item>();
+
             foreach (var item in BagConfig.Items)
             {
                 AddToBackpack(Instantiate(item));
             }
+
         }
 
         // Update is called once per frame

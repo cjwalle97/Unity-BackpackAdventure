@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 136851343586582604}
   - component: {fileID: 23992024944139246}
   - component: {fileID: 54138426329913620}
+  - component: {fileID: 114254222848904108}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -138,7 +139,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf826df29f0cf2a48be951b16bbfe9c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BagConfig: {fileID: 11400000, guid: 90d6acc537e7a584db4cb91e65ee7313, type: 2}
+  onItemAdd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Scripts.BackpackBehaviour+OnItemAdd, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  BagConfig: {fileID: 11400000, guid: 90c25cadda954e848981c777efadbb4c, type: 2}
+  Items: []
+  DEBUG: 0
+--- !u!114 &114254222848904108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1790870712876304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 194216647bdef22438269a4419240331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 25
 --- !u!136 &136851343586582604
 CapsuleCollider:
   m_ObjectHideFlags: 1

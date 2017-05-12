@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4509841a16c19b469d27eca29e50f1f, type: 3}
+  m_Name: TravelerBackpack
+  m_EditorClassIdentifier: 
+  BackpackName: Traveler's Backpack
+  Items:
+  - {fileID: 11400000, guid: c0eb55958a3c96e46b2f6edc1f07214c, type: 2}
+  - {fileID: 11400000, guid: 615b63cafb4c80c43a9524fd5d58fd0e, type: 2}
