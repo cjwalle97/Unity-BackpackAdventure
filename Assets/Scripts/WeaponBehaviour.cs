@@ -13,7 +13,7 @@
         // Use this for initialization
         void Start()
         {
-            _other = Instantiate(WeaponConfig);
+            _other = Instantiate(WeaponConfig);            
         }
 
         // Update is called once per frame

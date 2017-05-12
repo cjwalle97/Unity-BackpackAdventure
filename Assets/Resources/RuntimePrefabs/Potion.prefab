@@ -9,33 +9,33 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1778846722477962}
+  m_RootGameObject: {fileID: 1107637642098150}
   m_IsPrefabParent: 1
---- !u!1 &1778846722477962
+--- !u!1 &1107637642098150
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4503128884004302}
-  - component: {fileID: 33442546006976882}
-  - component: {fileID: 136234075349302864}
-  - component: {fileID: 23331722747779858}
-  - component: {fileID: 114594676021609828}
+  - component: {fileID: 4732496221621668}
+  - component: {fileID: 33242493713851030}
+  - component: {fileID: 136190571280599914}
+  - component: {fileID: 23631174191963030}
+  - component: {fileID: 114567584983824030}
   m_Layer: 0
-  m_Name: Potion Capsule
+  m_Name: Potion
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4503128884004302
+--- !u!4 &4732496221621668
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1778846722477962}
+  m_GameObject: {fileID: 1107637642098150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.4, y: 1.3080244, z: 0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -43,12 +43,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23331722747779858
+--- !u!23 &23631174191963030
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1778846722477962}
+  m_GameObject: {fileID: 1107637642098150}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -75,19 +75,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33442546006976882
+--- !u!33 &33242493713851030
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1778846722477962}
+  m_GameObject: {fileID: 1107637642098150}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114594676021609828
+--- !u!114 &114567584983824030
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1778846722477962}
+  m_GameObject: {fileID: 1107637642098150}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e415f1468fd9e5b4f9bb0447c9280c32, type: 3}
@@ -95,12 +95,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PotionConfig: {fileID: 11400000, guid: d313a3e7c4a395a488b1321413138cfc, type: 2}
   _other: {fileID: 0}
---- !u!136 &136234075349302864
+--- !u!136 &136190571280599914
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1778846722477962}
+  m_GameObject: {fileID: 1107637642098150}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
