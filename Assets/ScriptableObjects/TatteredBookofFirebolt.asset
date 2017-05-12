@@ -8,9 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86404489bb5d49a4187bb6c9810a971b, type: 3}
-  m_Name: PoisonSweetRoll
+  m_Script: {fileID: 11500000, guid: 2445e828f8b1b6544b4714e005fbfb3e, type: 3}
+  m_Name: TatteredBookofFirebolt
   m_EditorClassIdentifier: 
-  Name: 
-  Recover: -5
-  thesweetness: -50
+  Name: Tattered Book of Firebolt
+  SkillName: Firebolt
+  FIREDAMAGE: 10
