@@ -74,6 +74,20 @@ namespace Scripts
             return false;
         }
         
+
+        private void _display_rawbackpack()
+        {
+            //-LOG ALL BACKPACK CONTENTS TO CONSOLE
+            foreach (var itemtype in _backpack)
+            {
+                foreach (var item in itemtype.Value)
+                {
+                    Debug.Log(itemtype.Key + "(" + item.Name + ")");
+                    //_currentconfig.Items.Add(item);
+                }
+            }
+        }
+
         // Use this for initialization
         void Start()
         {
@@ -88,15 +102,8 @@ namespace Scripts
         // Update is called once per frame
         void Update()
         {
-            //-LOG ALL BACKPACK CONTENTS TO CONSOLE
-            foreach (var itemtype in _backpack)
-            {
-                foreach (var item in itemtype.Value)
-                {
-                    Debug.Log(itemtype.Key + "(" + item.Name + ")");
-                    //_currentconfig.Items.Add(item);
-                }
-            }
+            _display_rawbackpack();
+
 
         }
     }
