@@ -2,9 +2,9 @@
 
     using UnityEngine;
 
-    [CreateAssetMenu(fileName = "Book", menuName = "Item/Permanent/Book",
+    [CreateAssetMenu(fileName = "Book", menuName = "Item/Equipment/Book",
         order = 0)]
-    public class Book : Item {
+    public abstract class Book : Equipment {
         public string SkillName;
     }
 }

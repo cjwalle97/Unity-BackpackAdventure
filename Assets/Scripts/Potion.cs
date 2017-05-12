@@ -5,7 +5,7 @@
     [CreateAssetMenu(fileName = "Potion", menuName = "Item/Consumable/Potion",
         order = 0)]
 
-    public class Potion : Item
+    public abstract class Potion : Consumable
     {
         public int Recovery;
     }
