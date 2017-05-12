@@ -24,27 +24,10 @@ namespace Scripts
 
         public bool AddToBackpack(Item item)
         {
-<<<<<<< Updated upstream
-            //CHECK ITEM TYPE
-            //SORT ACCORDLING
-            string itemtypekey = item.GetType().ToString();
-
-            //CHECK IF BACKPACK HAS ITEM ALREADY
-            //IF NOT, ADD NEW LIST FOR THAT ITEM TYPE
-            if (_backpack.ContainsKey(itemtypekey) == false)
-            {
-                List<Item> itemlist = new List<Item>();
-                itemlist.Add(item);
-                _backpack.Add(itemtypekey, itemlist);
-                itemlist = null;
-                return true;
-            }
-=======
             Items.Add(item);
             onItemAdd.Invoke(item);
             return true;
         }
->>>>>>> Stashed changes
 
         public bool RemoveFromBackpack(Item item)
         {
