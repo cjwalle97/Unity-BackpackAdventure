@@ -14,7 +14,7 @@ namespace Scripts
         {
             //CHECK ITEM TYPE
             //SORT ACCORDLING
-            string itemtypekey = item.Type.ToString();
+            string itemtypekey = item.GetType().ToString();
 
             //CHECK IF BACKPACK HAS ITEM ALREADY
             //IF NOT, ADD NEW LIST FOR THAT ITEM TYPE

@@ -8,9 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9e357be54cc13e4ab12e4295feff836, type: 3}
-  m_Name: SweetRoll
+  m_Script: {fileID: 11500000, guid: 6360b3a36fbdc3f40be7ae742d4d5413, type: 3}
+  m_Name: SuperShockBombOfDeath
   m_EditorClassIdentifier: 
-  Name: Sweet Roll
-  Type: 0
-  Recover: 10
+  Name: 
+  Damage: 0
+  SHOCKDAMAGE: 1

@@ -1,4 +1,5 @@
-﻿namespace Scripts {
+﻿namespace Scripts
+{
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
@@ -23,7 +24,7 @@
 
         private void OnTriggerEnter(Collider col)
         {
-            if(col.tag == "Player")
+            if (col.tag == "Player")
             {
                 col.GetComponentInChildren<BackpackBehaviour>().AddToBackpack(_other);
                 Destroy(gameObject);
