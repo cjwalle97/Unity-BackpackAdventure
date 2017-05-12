@@ -5,7 +5,7 @@
     [CreateAssetMenu(fileName = "Food", menuName = "Item/Consumable/Food",
         order = 0)]
 
-    public class Food : Item
+    public class Food : Consumable
     {
         public int Recover;
     }

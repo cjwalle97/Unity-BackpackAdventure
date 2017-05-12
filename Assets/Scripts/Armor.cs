@@ -2,10 +2,10 @@
 
     using UnityEngine;
 
-    [CreateAssetMenu(fileName = "Armor", menuName = "Item/Permanent/Armor", 
-        order = 0)]
+    [CreateAssetMenu(fileName = "Armor", menuName = "Item/Equipment/Armor", 
+        order = 1)]
 
-    public class Armor : Item {
+    public class Armor : Equipment {
         public int Defense;
     }
 }
