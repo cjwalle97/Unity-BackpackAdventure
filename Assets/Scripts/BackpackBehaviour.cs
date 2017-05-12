@@ -10,7 +10,7 @@ namespace Scripts
         //private Backpack _currentconfig;
         private Dictionary<string, List<Item>> _backpack;      
 
-        private bool AddToBackpack(Item item)
+        public bool AddToBackpack(Item item)
         {
             //CHECK ITEM TYPE
             //SORT ACCORDLING
@@ -37,7 +37,7 @@ namespace Scripts
             return false;
         }
 
-        private bool RemoveFromBackpack(string name)
+        public bool RemoveFromBackpack(string name)
         {
             //CHECK EACH ITEMTYPE IN BACKPACK
             foreach (var itemtype in _backpack)
@@ -89,15 +89,15 @@ namespace Scripts
         void Update()
         {
             //-LOG ALL BACKPACK CONTENTS TO CONSOLE
-            //foreach (var itemtype in _backpack)
-            //{
-            //    foreach (var item in itemtype.Value)
-            //    {
-            //        Debug.Log(itemtype.Key + "(" + item.Name + ")");
-            //        //_currentconfig.Items.Add(item);
-            //    }
-            //}
-           
+            foreach (var itemtype in _backpack)
+            {
+                foreach (var item in itemtype.Value)
+                {
+                    Debug.Log(itemtype.Key + "(" + item.Name + ")");
+                    //_currentconfig.Items.Add(item);
+                }
+            }
+
         }
     }
 }
