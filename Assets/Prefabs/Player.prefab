@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1574026491286470}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.85, y: -1.3080244, z: 10.86}
+  m_LocalPosition: {x: -0.15, y: -0.47, z: 1.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4556273461537832}
@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1790870712876304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.55, y: 1.3080244, z: -10.86}
+  m_LocalPosition: {x: 3.26, y: 1.051, z: -3.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4347995243524376}
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf826df29f0cf2a48be951b16bbfe9c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BagConfig: {fileID: 11400000, guid: 0dc487fda9d3f7645b7d13c02ed56ca9, type: 2}
+  BagConfig: {fileID: 11400000, guid: 90d6acc537e7a584db4cb91e65ee7313, type: 2}
 --- !u!136 &136851343586582604
 CapsuleCollider:
   m_ObjectHideFlags: 1

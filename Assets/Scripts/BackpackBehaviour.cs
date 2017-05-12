@@ -1,17 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿
 
 namespace Scripts
 {
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using UnityEngine.Events;
+    
+
+
+
+
+
     public class BackpackBehaviour : MonoBehaviour
     {
+        [System.Serializable]
+        public class OnItemAdd : UnityEvent<Item> { }
+        public OnItemAdd onItemAdd;
         public Backpack BagConfig;
-        //private Backpack _currentconfig;
-        private Dictionary<string, List<Item>> _backpack;     
+        //private Backpack _currentconfig;        
+        public List<Item> Items;
+        public bool DEBUG = false;
 
         public bool AddToBackpack(Item item)
         {
+<<<<<<< Updated upstream
             //CHECK ITEM TYPE
             //SORT ACCORDLING
             string itemtypekey = item.GetType().ToString();
@@ -26,38 +39,39 @@ namespace Scripts
                 itemlist = null;
                 return true;
             }
+=======
+            Items.Add(item);
+            onItemAdd.Invoke(item);
+            return true;
+        }
+>>>>>>> Stashed changes
 
-            //IF BACKPACK HAS ITEM ALREADY, ADD ITEM TO ALREADY EXISTING ITEMLIST
-            //  - MAKE SURE ITEM IS NOT NULL
-            if (item != null)
+        public bool RemoveFromBackpack(Item item)
+        {
+            if(Items.Contains(item))
             {
-                _backpack[itemtypekey].Add(item);
+                string tmpkey = item.GetType().ToString();
+                string itemkey = tmpkey.Remove(0, 8);
+                Debug.Log(itemkey);
+                Instantiate(Resources.Load("RuntimePrefabs/" + itemkey), transform.position, transform.rotation);
+                //tmp.GetComponent(itemkey + "Behaviour").
+                Items.Remove(item);
                 return true;
             }
             return false;
         }
 
-        public bool RemoveFromBackpack(string name)
+        public bool RemoveFromBackpack()
         {
-            //CHECK EACH ITEMTYPE IN BACKPACK
-            foreach (var itemtype in _backpack)
+            foreach (var item in Items)
             {
-                //CHECK EACH ITEM IN CATAGORY
-                foreach (var item in itemtype.Value)
-                {
-                    //IF MATCH, REMOVE
-                    if (item.Name == name)
-                    {
-                        string itemkey = item.GetType().ToString();
-                        string editedkey = itemkey.Remove(0, 8);
-                        Instantiate(Resources.Load("RuntimePrefabs/" + editedkey) as GameObject, transform.position, transform.rotation);                        
-                        itemtype.Value.Remove(item);
-                        return true;
-                    }
-                }
+                string tmpkey = item.GetType().ToString();
+                string itemkey = tmpkey.Remove(0, 8);
+                Debug.Log(itemkey);
+                Instantiate(Resources.Load("RuntimePrefabs/" + itemkey), transform.position, transform.rotation);
+                Items.Remove(item);
+                return true;
             }
-
-            //NO MATCHES RETURN FALSE
             return false;
         }
 
@@ -69,50 +83,40 @@ namespace Scripts
 
         private bool AddConfigToBackpack(Backpack newconfig)
         {
-            foreach(var item in newconfig.Items)
+            foreach (var item in newconfig.Items)
             {
                 AddToBackpack(item);
                 return true;
             }
             return false;
         }
-        
 
         private void _display_rawbackpack()
         {
             //-LOG ALL BACKPACK CONTENTS TO CONSOLE
-            foreach (var itemtype in _backpack)
-            {
-                foreach (var item in itemtype.Value)
-                {
-                    Debug.Log(itemtype.Key + "(" + item.Name + ")");
-                    //_currentconfig.Items.Add(item);
-                }
-            }
+            Items.ForEach(x => { Debug.Log(x.Name); });
         }
-
+        
         // Use this for initialization
         void Start()
         {
-            _backpack = new Dictionary<string, List<Item>>();
-            Instantiate(BagConfig);
+            Items = new List<Item>();
             foreach (var item in BagConfig.Items)
             {
-                AddToBackpack(item);
+                AddToBackpack(Instantiate(item));
             }
         }
 
         // Update is called once per frame
         void Update()
         {
-            _display_rawbackpack();
+            if (DEBUG)
+                _display_rawbackpack();
 
-            if(Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                RemoveFromBackpack("Health Potion");
+                RemoveFromBackpack();
             }
-
-
         }
     }
 }
