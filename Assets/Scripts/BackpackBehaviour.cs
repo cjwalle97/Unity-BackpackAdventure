@@ -8,7 +8,7 @@ namespace Scripts
     {
         public Backpack BagConfig;
         //private Backpack _currentconfig;
-        private Dictionary<string, List<Item>> _backpack;      
+        private Dictionary<string, List<Item>> _backpack;     
 
         public bool AddToBackpack(Item item)
         {
@@ -48,6 +48,9 @@ namespace Scripts
                     //IF MATCH, REMOVE
                     if (item.Name == name)
                     {
+                        string itemkey = item.GetType().ToString();
+                        string editedkey = itemkey.Remove(0, 8);
+                        Instantiate(Resources.Load("RuntimePrefabs/" + editedkey) as GameObject, transform.position, transform.rotation);                        
                         itemtype.Value.Remove(item);
                         return true;
                     }
@@ -103,6 +106,11 @@ namespace Scripts
         void Update()
         {
             _display_rawbackpack();
+
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                RemoveFromBackpack("Health Potion");
+            }
 
 
         }
