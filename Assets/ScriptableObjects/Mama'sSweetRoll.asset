@@ -11,6 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86404489bb5d49a4187bb6c9810a971b, type: 3}
   m_Name: Mama'sSweetRoll
   m_EditorClassIdentifier: 
+<<<<<<< HEAD:Assets/ScriptableObjects/PoisonSweetRoll.asset
+  Name: PoisonSweetRoll
+  Recover: -5
+  thesweetness: -50
+=======
   Name: Mama's SweetRoll
   Recover: 20
   thesweetness: 50
+>>>>>>> master:Assets/ScriptableObjects/Mama'sSweetRoll.asset
