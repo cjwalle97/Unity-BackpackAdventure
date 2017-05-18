@@ -8,9 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86404489bb5d49a4187bb6c9810a971b, type: 3}
-  m_Name: PoisonSweetRoll
+  m_Script: {fileID: 11500000, guid: a08fd0668c8b7034981ef3710694fe0c, type: 3}
+  m_Name: LeatherShield
   m_EditorClassIdentifier: 
-  Name: PoisonSweetRoll
-  Recover: -5
-  thesweetness: -50
+  Name: Leather Shield
+  Defense: 5
