@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86404489bb5d49a4187bb6c9810a971b, type: 3}
   m_Name: PoisonSweetRoll
   m_EditorClassIdentifier: 
-  Name: 
+  Name: PoisonSweetRoll
   Recover: -5
   thesweetness: -50

@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6360b3a36fbdc3f40be7ae742d4d5413, type: 3}
   m_Name: SuperShockBombOfDeath
   m_EditorClassIdentifier: 
-  Name: 
+  Name: ShockBomb
   Damage: 0
   SHOCKDAMAGE: 1
