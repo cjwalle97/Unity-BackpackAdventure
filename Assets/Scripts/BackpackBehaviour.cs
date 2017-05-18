@@ -1,4 +1,6 @@
-﻿
+﻿//Get with teammates and build out the following.
+//  - pick up items and invoke events with the item
+//  - listen for this event from the ui and populate the text field with the item name + "\n"
 
 namespace Scripts
 {
@@ -12,6 +14,11 @@ namespace Scripts
         [System.Serializable]
         public class OnItemAdd : UnityEvent<Item> { }
         public OnItemAdd onItemAdd;
+
+        [System.Serializable]
+        public class OnItems : UnityEvent<List<Item>> {}
+        public OnItems sendItems;
+
         public Backpack BagConfig;
         public List<Item> Items;
         public bool DEBUG = false;
@@ -19,7 +26,8 @@ namespace Scripts
         public bool AddToBackpack(Item item)
         {
             Items.Add(item);
-            onItemAdd.Invoke(item);
+            //onItemAdd.Invoke(item);
+            //Debug.Log(item.Name);
             return true;
         }
 
@@ -80,6 +88,8 @@ namespace Scripts
         {
             Items = new List<Item>();
 
+            //OnItemAdd.AddListener()
+
             foreach (var item in BagConfig.Items)
             {
                 AddToBackpack(Instantiate(item));
@@ -92,6 +102,8 @@ namespace Scripts
         {
             if (DEBUG)
                 _display_rawbackpack();
+
+            sendItems.Invoke(Items);
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
