@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BackpackName: Traveler's Backpack
   Items:
-  - {fileID: 11400000, guid: c0eb55958a3c96e46b2f6edc1f07214c, type: 2}
-  - {fileID: 11400000, guid: 615b63cafb4c80c43a9524fd5d58fd0e, type: 2}
+  - {fileID: 11400000, guid: 06d81bbf770975f4793772753e419788, type: 2}
+  - {fileID: 11400000, guid: e28f2056fe27a894b8f3d074690df08e, type: 2}
