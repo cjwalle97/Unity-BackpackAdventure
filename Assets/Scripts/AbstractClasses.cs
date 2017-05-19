@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+
 public abstract class Item : ScriptableObject
 {
     public string Name;
@@ -13,7 +14,6 @@ public abstract class Equipment : Item
 {
 
 }
-
 
 public abstract class Food : Consumable
 {
