@@ -11,6 +11,7 @@ public class TestPlayerLoader : MonoBehaviour {
 	    if(Input.GetKeyDown(KeyCode.F4))
         {
             player = PlayerLoader.Instance.LoadPlayer("DEBUGPLAYER");
+            GetComponent<PlayerBehaviour>().player.Health = player.Health;
         }	
 	}
 }

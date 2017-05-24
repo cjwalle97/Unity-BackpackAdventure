@@ -50,11 +50,11 @@ namespace Scripts
         {
             foreach (var item in Items)
             {
-                //string tmpkey = item.GetType().ToString();                
-                //string itemkey = tmpkey.Remove(0, 8);
+                string tmpkey = item.GetType().ToString();             
+                string itemkey = tmpkey.Remove(0, 8);
                 //string itemkey = tmpkey;
-                //Debug.Log(itemkey);
-                //Instantiate(Resources.Load("RuntimePrefabs/" + itemkey), transform.position, transform.rotation);
+                Debug.Log(itemkey);
+                Instantiate(Resources.Load("RuntimePrefabs/" + itemkey), transform.position, transform.rotation);
                 Items.Remove(item);
                 return true;
             }
