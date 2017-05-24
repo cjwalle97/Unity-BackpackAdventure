@@ -30,7 +30,7 @@
             if (col.tag == "Player")
             {
                 col.GetComponentInChildren<BackpackBehaviour>().AddToBackpack(_other);
-                Destroy(gameObject);
+                OnPickUp();
             }
         }
         public void OnPickUp()
