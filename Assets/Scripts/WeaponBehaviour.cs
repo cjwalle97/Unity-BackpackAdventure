@@ -10,10 +10,13 @@
         [HideInInspector]
         public Weapon _other;
 
+        private Vector3 OriginalScale;
+
         // Use this for initialization
         void Start()
         {
-            _other = Instantiate(WeaponConfig);            
+            _other = Instantiate(WeaponConfig);
+            OriginalScale = gameObject.transform.localScale;
         }
 
         // Update is called once per frame
@@ -29,6 +32,18 @@
                 col.GetComponentInChildren<BackpackBehaviour>().AddToBackpack(_other);
                 Destroy(gameObject);
             }
+        }
+        public void OnPickUp()
+        {
+            Vector3 newScale = new Vector3(0, 0, 0);
+            gameObject.transform.localScale = newScale;
+            Destroy(gameObject);
+        }
+
+        public void OnDrop(Weapon other)
+        {
+            _other = Instantiate(other);
+            gameObject.transform.localScale = OriginalScale;
         }
     }
 }

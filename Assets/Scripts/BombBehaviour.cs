@@ -10,10 +10,13 @@
         [HideInInspector]
         public Bomb _other;
 
+        private Vector3 OriginalScale;
+
         // Use this for initialization
         void Start()
         {
             _other = Instantiate(BombConfig);
+            OriginalScale = gameObject.transform.localScale;
         }
 
         // Update is called once per frame
@@ -21,7 +24,6 @@
         {
 
         }
-
         private void OnTriggerEnter(Collider col)
         {
             if (col.tag == "Player")
@@ -30,6 +32,17 @@
                 Destroy(gameObject);
             }
         }
+        public void OnPickUp()
+        {
+            Vector3 newScale = new Vector3(0, 0, 0);
+            gameObject.transform.localScale = newScale;
+            Destroy(gameObject);
+        }
 
+        public void OnDrop(Bomb other)
+        {
+            _other = Instantiate(other);
+            gameObject.transform.localScale = OriginalScale;
+        }
     }
 }
