@@ -2,21 +2,6 @@
 //  - pick up items and invoke events with the item
 //  - listen for this event from the ui and populate the text field with the item name + "\n"
 
-
-
-/*Assignment
-    Theme: How to Contribute!
-    Contributions to repositories increase professional value.
-    1. Create a Loot Table
-    precondition: Must have List of Item
-    postcondition: Returns a List of Item with respect to random roll
-    Specifications
-    a. Scriptable Object to be created per designer specifications
-    b. List of Item types to populate with
-    c. Chance for each item.
-    d. GetDrops method to return all drops on resolution */
-
-
 namespace Scripts
 {
     using System.Collections;
@@ -65,11 +50,11 @@ namespace Scripts
         {
             foreach (var item in Items)
             {
-                //string tmpkey = item.GetType().ToString();                
-                //string itemkey = tmpkey.Remove(0, 8);
+                string tmpkey = item.GetType().ToString();             
+                string itemkey = tmpkey.Remove(0, 8);
                 //string itemkey = tmpkey;
-                //Debug.Log(itemkey);
-                //Instantiate(Resources.Load("RuntimePrefabs/" + itemkey), transform.position, transform.rotation);
+                Debug.Log(itemkey);
+                Instantiate(Resources.Load("RuntimePrefabs/" + itemkey), transform.position, transform.rotation);
                 Items.Remove(item);
                 return true;
             }
