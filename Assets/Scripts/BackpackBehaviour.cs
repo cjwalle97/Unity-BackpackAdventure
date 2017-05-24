@@ -50,11 +50,39 @@ namespace Scripts
         {
             foreach (var item in Items)
             {
-                string tmpkey = item.GetType().ToString();             
-                string itemkey = tmpkey.Remove(0, 8);
-                //string itemkey = tmpkey;
+                string tmpkey = item.GetType().BaseType.ToString();    
+                //string itemkey = tmpkey.Remove(0, 8);
+                string itemkey = tmpkey;
                 Debug.Log(itemkey);
-                Instantiate(Resources.Load("RuntimePrefabs/" + itemkey), transform.position, transform.rotation);
+                var newItem = Instantiate(Resources.Load("RuntimePrefabs/" + itemkey), transform.position, transform.rotation) as GameObject;
+                switch(tmpkey)
+                {
+                    case "Potion":
+                        newItem.GetComponent<PotionBehaviour>().OnDrop(item as Potion);
+                        break;
+
+                    case "Armor":
+                        newItem.GetComponent<ArmorBehaviour>().OnDrop(item as Armor);
+                        break;
+
+                    case "Bomb":
+                        newItem.GetComponent<BombBehaviour>().OnDrop(item as Bomb);
+                        break;
+
+                    case "Food":
+                        newItem.GetComponent<FoodBehaviour>().OnDrop(item as Food);
+                        break;
+
+                    case "Weapon":
+                        newItem.GetComponent<WeaponBehaviour>().OnDrop(item as Weapon);
+                        break;
+
+                    case "Book":
+                        newItem.GetComponent<BookBehaviour>().OnDrop(item as Book);
+                        break;
+
+                }
+                                                
                 Items.Remove(item);
                 return true;
             }

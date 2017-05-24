@@ -18,13 +18,7 @@
             _other = Instantiate(PotionConfig);
             OriginalScale = gameObject.transform.localScale;
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
+        
         private void OnTriggerEnter(Collider col)
         {
             if (col.tag == "Player")
@@ -35,15 +29,19 @@
         }
         public void OnPickUp()
         {
-            Vector3 newScale = new Vector3(0, 0, 0);
-            gameObject.transform.localScale = newScale;
-            Destroy(gameObject);
+            for(float size = 4.0f; size > 0.0f; size -= 0.1f)
+            {
+                gameObject.transform.localScale = new Vector3(size, size, size);
+            }
+            
+            Destroy(gameObject, 0.5f);
         }
 
         public void OnDrop(Potion other)
         {
             _other = Instantiate(other);
-            gameObject.transform.localScale = OriginalScale;
+            Debug.Log(other.name);
+            //gameObject.transform.localScale = OriginalScale;
         }
     }
 }

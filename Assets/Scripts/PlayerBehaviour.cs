@@ -10,7 +10,7 @@ public class PlayerBehaviour : MonoBehaviour {
     // Update is called once per frame
     void Update () {
                 
-        PlayerHealth = player.Health;
+        PlayerHealth = player.Health;      
 
 	}
 }
