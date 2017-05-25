@@ -531,30 +531,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: 9c67f51c8b199d046b03e70ced900309, type: 2}
   PlayerHealth: 0
---- !u!114 &1222295868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1222295860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6326cc7760770f44a995b6e1c6f916d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Backpack: {fileID: 0}
---- !u!114 &1222295869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1222295860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8552432f85ac0343974939b5ce8c806, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backpack: {fileID: 0}
 --- !u!1001 &1256425948
 Prefab:
   m_ObjectHideFlags: 0

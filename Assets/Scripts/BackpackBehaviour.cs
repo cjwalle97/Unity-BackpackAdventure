@@ -20,42 +20,23 @@ namespace Scripts
         public OnItems sendItems;
 
         public Backpack BagConfig;
-        public List<Item> Items;
-        public bool DEBUG = false;
+        [HideInInspector]
+        public Backpack Pack;
 
         public bool AddToBackpack(Item item)
         {
-            Items.Add(item);
-            //onItemAdd.Invoke(item);
-            //Debug.Log(item.Name);
+            Pack.Items.Add(item);            
+            //onItemAdd.Invoke(item);            
             return true;
-        }
-
-        public bool RemoveFromBackpack(Item item)
-        {
-            if (Items.Contains(item))
-            {
-                string tmpkey = item.GetType().ToString();
-                string itemkey = tmpkey.Remove(0, 8);
-                Debug.Log(itemkey);
-                Instantiate(Resources.Load("RuntimePrefabs/" + itemkey), transform.position, transform.rotation);
-                //tmp.GetComponent(itemkey + "Behaviour").
-                Items.Remove(item);
-                return true;
-            }
-            return false;
         }
 
         public bool RemoveFromBackpack()
         {
-            foreach (var item in Items)
+            foreach (var item in Pack.Items)
             {
-                string tmpkey = item.GetType().BaseType.ToString();    
-                //string itemkey = tmpkey.Remove(0, 8);
-                string itemkey = tmpkey;
-                Debug.Log(itemkey);
+                string itemkey = item.GetType().BaseType.ToString();                
                 var newItem = Instantiate(Resources.Load("RuntimePrefabs/" + itemkey), transform.position, transform.rotation) as GameObject;
-                switch(tmpkey)
+                switch(itemkey)
                 {
                     case "Potion":
                         newItem.GetComponent<PotionBehaviour>().OnDrop(item as Potion);
@@ -80,67 +61,35 @@ namespace Scripts
                     case "Book":
                         newItem.GetComponent<BookBehaviour>().OnDrop(item as Book);
                         break;
-
                 }
-                                                
-                Items.Remove(item);
+
+                Pack.Items.Remove(item);
                 return true;
             }
             return false;
-        }
-
-        private bool ChangeBackpackConfig(Backpack newconfig)
-        {
-            //_currentconfig = newconfig;
-            return true;
-        }
-
-        private bool AddConfigToBackpack(Backpack newconfig)
-        {
-            foreach (var item in newconfig.Items)
-            {
-                AddToBackpack(item);
-                return true;
-            }
-            return false;
-        }
-
-        private void _display_rawbackpack()
-        {
-            //-LOG ALL BACKPACK CONTENTS TO CONSOLE
-            Items.ForEach(x => { Debug.Log(x.Name); });
         }
 
         // Use this for initialization
         void Start()
         {
-            Items = new List<Item>();
-
+            Pack = ScriptableObject.CreateInstance<Backpack>();
+            Pack.Items = new List<Item>();
             //OnItemAdd.AddListener()
-
             foreach (var item in BagConfig.Items)
             {
                 AddToBackpack(Instantiate(item));
             }
-
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (DEBUG)
-                _display_rawbackpack();
-
-            sendItems.Invoke(Items);
+            sendItems.Invoke(Pack.Items);
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 RemoveFromBackpack();
             }
         }
-
-
-        //HELLO ARTISTS
-
     }
 }

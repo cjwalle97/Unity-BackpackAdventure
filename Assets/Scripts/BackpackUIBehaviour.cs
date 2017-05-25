@@ -20,7 +20,8 @@ public class BackpackUIBehaviour : MonoBehaviour {
 		UIText.text = "Items \n";
 		foreach(var item in items)
 		{
-			UIText.text += item.Name + "\n";
+            Debug.Log(item);
+			//UIText.text += item.Name + "\n";
 		}
 	}
 

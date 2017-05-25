@@ -10,13 +10,13 @@
         [HideInInspector]
         public Potion _other;
 
-        private Vector3 OriginalScale;
+        //private Vector3 OriginalScale;
 
         // Use this for initialization
         void Start()
         {
             _other = Instantiate(PotionConfig);
-            OriginalScale = gameObject.transform.localScale;
+            //OriginalScale = gameObject.transform.localScale;
         }
         
         private void OnTriggerEnter(Collider col)
@@ -34,7 +34,7 @@
                 gameObject.transform.localScale = new Vector3(size, size, size);
             }
             
-            Destroy(gameObject, 0.5f);
+            Destroy(gameObject);
         }
 
         public void OnDrop(Potion other)

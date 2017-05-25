@@ -37,7 +37,5 @@ public class BackpackSaver : ScriptableObject {
         var path = Application.dataPath + "/StreamingAssets/" + filename + ".json";
 
         File.WriteAllText(path, json);
-    }
-
-
+    }    
 }
