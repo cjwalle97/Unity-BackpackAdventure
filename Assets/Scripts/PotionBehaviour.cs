@@ -39,7 +39,8 @@
 
         public void OnDrop(Potion other)
         {
-            _other = Instantiate(other);
+            PotionConfig = other;
+            _other = Instantiate(PotionConfig);
             Debug.Log(other.name);
             //gameObject.transform.localScale = OriginalScale;
         }

@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Scripts
+{
+    public class TestBackpackSaveScript : MonoBehaviour
+    {
 
-public class TestBackpackSaveScript : MonoBehaviour {
+        public Backpack Backpack;
 
-    public Backpack Backpack;
-	
-	// Update is called once per frame
-	void Update () {
-
-		if(Input.GetKeyDown(KeyCode.F1))
+        // Update is called once per frame
+        void Update()
         {
-            BackpackSaver.Instance.SaveBackpack(Backpack, "DEBUGBACKPACK");
+            Backpack.Items.AddRange(GetComponentInChildren<BackpackBehaviour>().Items);
+
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                Debug.Log("FI KEY PRESSED");
+                BackpackSaver.Instance.SaveBackpack(Backpack, "DEBUGBACKPACK");
+            }
         }
-	}
+    }
 }
