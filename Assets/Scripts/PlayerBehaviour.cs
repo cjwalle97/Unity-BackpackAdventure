@@ -21,7 +21,7 @@ namespace Scripts
         void Update()
         {
             PlayerHealth = player.Health;
-            _backpack = GetComponentInChildren<BackpackBehaviour>().Pack;            
+            _backpack = GetComponentInChildren<BackpackBehaviour>().Pack;
 
             if (Input.GetKeyDown(KeyCode.F1))
             {
@@ -30,7 +30,8 @@ namespace Scripts
 
             if (Input.GetKeyDown(KeyCode.F2))
             {
-                _backpack = BackpackLoader.Instance.LoadBackpack("DEBUG");
+                GetComponentInChildren<BackpackBehaviour>().Pack = BackpackLoader.Instance.LoadBackpack("DEBUG");
+                _backpack = GetComponentInChildren<BackpackBehaviour>().Pack;
                 //Items = _backpack.Items;
                 //_backpack.Items.ForEach(x => { x = Instantiate(x); });              
             }

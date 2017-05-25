@@ -108,6 +108,52 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &198506345
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4503128884004302, guid: 462c36d2778ef5c40bd5ff2c2f16032c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.53449154
+      objectReference: {fileID: 0}
+    - target: {fileID: 4503128884004302, guid: 462c36d2778ef5c40bd5ff2c2f16032c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4503128884004302, guid: 462c36d2778ef5c40bd5ff2c2f16032c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 4503128884004302, guid: 462c36d2778ef5c40bd5ff2c2f16032c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4503128884004302, guid: 462c36d2778ef5c40bd5ff2c2f16032c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4503128884004302, guid: 462c36d2778ef5c40bd5ff2c2f16032c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4503128884004302, guid: 462c36d2778ef5c40bd5ff2c2f16032c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4503128884004302, guid: 462c36d2778ef5c40bd5ff2c2f16032c, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1778846722477962, guid: 462c36d2778ef5c40bd5ff2c2f16032c, type: 2}
+      propertyPath: m_Name
+      value: Potion (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 462c36d2778ef5c40bd5ff2c2f16032c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &277650175
 Prefab:
   m_ObjectHideFlags: 0
@@ -531,6 +577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: 9c67f51c8b199d046b03e70ced900309, type: 2}
   PlayerHealth: 0
+  _backpack: {fileID: 0}
 --- !u!1001 &1256425948
 Prefab:
   m_ObjectHideFlags: 0

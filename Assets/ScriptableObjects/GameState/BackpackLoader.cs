@@ -31,7 +31,7 @@ public class BackpackLoader : ScriptableObject {
         var json = System.IO.File.ReadAllText(path);
         var backpack = CreateInstance<Backpack>();
 
-        JsonUtility.FromJsonOverwrite(json, backpack);
+        JsonUtility.FromJsonOverwrite(json, backpack);        
         return backpack;
     }
 

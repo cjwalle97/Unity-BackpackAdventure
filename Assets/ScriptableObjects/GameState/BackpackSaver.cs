@@ -35,6 +35,8 @@ public class BackpackSaver : ScriptableObject {
     {
         var json = JsonUtility.ToJson(backpack, true);
         var path = Application.dataPath + "/StreamingAssets/" + filename + ".json";
+        Backpack tmp = backpack;
+
 
         File.WriteAllText(path, json);
     }    
