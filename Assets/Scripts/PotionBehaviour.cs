@@ -10,21 +10,15 @@
         [HideInInspector]
         public Potion _other;
 
-        private Vector3 OriginalScale;
+        //private Vector3 OriginalScale;
 
         // Use this for initialization
         void Start()
         {
-            _other = Instantiate(PotionConfig);
-            OriginalScale = gameObject.transform.localScale;
+            _other = Instantiate(PotionConfig) as Potion;           
+            //OriginalScale = gameObject.transform.localScale;
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
+        
         private void OnTriggerEnter(Collider col)
         {
             if (col.tag == "Player")
@@ -35,15 +29,18 @@
         }
         public void OnPickUp()
         {
-            Vector3 newScale = new Vector3(0, 0, 0);
-            gameObject.transform.localScale = newScale;
+            for(float size = 4.0f; size > 0.0f; size -= 0.1f)
+            {
+                gameObject.transform.localScale = new Vector3(size, size, size);
+            }
+            
             Destroy(gameObject);
         }
 
         public void OnDrop(Potion other)
         {
-            _other = Instantiate(other);
-            gameObject.transform.localScale = OriginalScale;
+            PotionConfig = other;
+            _other = Instantiate(PotionConfig) as Potion;
         }
     }
 }

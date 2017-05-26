@@ -2,15 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBehaviour : MonoBehaviour {
+namespace Scripts
+{
+    public class PlayerBehaviour : MonoBehaviour
+    {
 
-    public Player player;
-    public float PlayerHealth;
-    
-    // Update is called once per frame
-    void Update () {
-                
-        PlayerHealth = player.Health;
+        public Player player;
 
-	}
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            
+        }
+    }
 }

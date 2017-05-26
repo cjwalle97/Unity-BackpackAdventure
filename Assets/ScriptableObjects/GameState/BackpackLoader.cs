@@ -29,9 +29,13 @@ public class BackpackLoader : ScriptableObject {
     {
         var path = Application.dataPath + "/StreamingAssets/" + filename + ".json";
         var json = System.IO.File.ReadAllText(path);
-        var backpack = CreateInstance<Backpack>();
+        var backpack = ScriptableObject.CreateInstance<Backpack>();
 
         JsonUtility.FromJsonOverwrite(json, backpack);
+        
+        //RETURNS NULL ITEMS AFTER SHUTDOWN OF GAME THEN STARTUP OF GAME
+        //  - IF IN GAME, SAVE/LOAD WORKS
+        //  - AFTER SHUTDOWN AND RESTART, 'backpack' RETURNS NULL ITEMS
         return backpack;
     }
 

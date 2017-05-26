@@ -20,73 +20,60 @@ namespace Scripts
         public OnItems sendItems;
 
         public Backpack BagConfig;
-        public List<Item> Items;
-        public bool DEBUG = false;
+        public Backpack Pack;
 
         public bool AddToBackpack(Item item)
         {
-            Items.Add(item);
-            //onItemAdd.Invoke(item);
-            //Debug.Log(item.Name);
+            Pack.Items.Add(item);
+            sendItems.Invoke(Pack.Items);
             return true;
-        }
-
-        public bool RemoveFromBackpack(Item item)
-        {
-            if (Items.Contains(item))
-            {
-                string tmpkey = item.GetType().ToString();
-                string itemkey = tmpkey.Remove(0, 8);
-                Debug.Log(itemkey);
-                Instantiate(Resources.Load("RuntimePrefabs/" + itemkey), transform.position, transform.rotation);
-                //tmp.GetComponent(itemkey + "Behaviour").
-                Items.Remove(item);
-                return true;
-            }
-            return false;
         }
 
         public bool RemoveFromBackpack()
         {
-            foreach (var item in Items)
+            foreach (var item in Pack.Items)
             {
-                string tmpkey = item.GetType().ToString();             
-                string itemkey = tmpkey.Remove(0, 8);
-                //string itemkey = tmpkey;
-                Debug.Log(itemkey);
-                Instantiate(Resources.Load("RuntimePrefabs/" + itemkey), transform.position, transform.rotation);
-                Items.Remove(item);
+                string itemkey = item.GetType().BaseType.ToString();                
+                var newItem = Instantiate(Resources.Load("RuntimePrefabs/" + itemkey), transform.position, transform.rotation) as GameObject;
+                switch(itemkey)
+                {
+                    case "Potion":
+                        newItem.GetComponent<PotionBehaviour>().OnDrop(item as Potion);
+                        break;
+
+                    case "Armor":
+                        newItem.GetComponent<ArmorBehaviour>().OnDrop(item as Armor);
+                        break;
+
+                    case "Bomb":
+                        newItem.GetComponent<BombBehaviour>().OnDrop(item as Bomb);
+                        break;
+
+                    case "Food":
+                        newItem.GetComponent<FoodBehaviour>().OnDrop(item as Food);
+                        break;
+
+                    case "Weapon":
+                        newItem.GetComponent<WeaponBehaviour>().OnDrop(item as Weapon);
+                        break;
+
+                    case "Book":
+                        newItem.GetComponent<BookBehaviour>().OnDrop(item as Book);
+                        break;
+                }
+
+                Pack.Items.Remove(item);
+                sendItems.Invoke(Pack.Items);
                 return true;
             }
             return false;
-        }
-
-        private bool ChangeBackpackConfig(Backpack newconfig)
-        {
-            //_currentconfig = newconfig;
-            return true;
-        }
-
-        private bool AddConfigToBackpack(Backpack newconfig)
-        {
-            foreach (var item in newconfig.Items)
-            {
-                AddToBackpack(item);
-                return true;
-            }
-            return false;
-        }
-
-        private void _display_rawbackpack()
-        {
-            //-LOG ALL BACKPACK CONTENTS TO CONSOLE
-            Items.ForEach(x => { Debug.Log(x.Name); });
         }
 
         // Use this for initialization
         void Start()
         {
-            Items = new List<Item>();
+            Pack = ScriptableObject.CreateInstance<Backpack>();
+            Pack.Items = new List<Item>();
 
             //OnItemAdd.AddListener()
 
@@ -94,21 +81,51 @@ namespace Scripts
             {
                 AddToBackpack(Instantiate(item));
             }
-
+            sendItems.Invoke(Pack.Items);
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (DEBUG)
-                _display_rawbackpack();
+            Pack.Items.ForEach(x => { if (x == null) { Pack.Items.Remove(x); } });
 
-            sendItems.Invoke(Items);
+            if(Input.GetKey(KeyCode.I))
+            {
+                sendItems.Invoke(Pack.Items);
+            }
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
                 RemoveFromBackpack();
             }
+            
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                Save();
+            }
+
+            if (Input.GetKeyDown(KeyCode.F2))
+            {
+                Load();
+                Debug.Log("BREAKPOINT");
+
+                //GetComponentInChildren<BackpackBehaviour>().Pack = BackpackLoader.Instance.LoadBackpack("BackpackSave");
+                //_backpack = GetComponentInChildren<BackpackBehaviour>().Pack;              
+            }
+        }
+
+        public void Save()
+        {
+            BackpackSaver.Instance.SaveBackpack(Pack, "BackpackSave");
+            sendItems.Invoke(Pack.Items);
+        }
+
+        public void Load()
+        {
+            var p = BackpackLoader.Instance.LoadBackpack("BackpackSave");
+            Pack.Items.ForEach(Destroy);
+            Pack.Items.AddRange(p.Items);
+            sendItems.Invoke(Pack.Items);
         }
     }
 }

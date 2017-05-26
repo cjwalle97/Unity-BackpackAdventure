@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460a5604590d6cd4f9ad36911161b7a4, type: 3}
   m_Name: Basic_Player
   m_EditorClassIdentifier: 
-  Name: 
+  Name: DEBUG
   Health: 900
   Mana: 40

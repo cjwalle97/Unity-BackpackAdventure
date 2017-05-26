@@ -16,7 +16,7 @@
         // Use this for initialization
         void Start()
         {
-            _other = Instantiate(BookConfig);
+            _other = Instantiate(BookConfig) as Book;
             OriginalScale = gameObject.transform.localScale;
         }
 
@@ -42,8 +42,8 @@
 
         public void OnDrop(Book other)
         {
-            _other = Instantiate(other);
-            gameObject.transform.localScale = OriginalScale;
+            BookConfig = other;
+            _other = Instantiate(BookConfig) as Book;
         }
     }
 }
