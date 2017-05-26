@@ -20,13 +20,12 @@ namespace Scripts
         public OnItems sendItems;
 
         public Backpack BagConfig;
-        [HideInInspector]
         public Backpack Pack;
 
         public bool AddToBackpack(Item item)
         {
-            Pack.Items.Add(item);            
-            //onItemAdd.Invoke(item);            
+            Pack.Items.Add(item);
+            sendItems.Invoke(Pack.Items);
             return true;
         }
 
@@ -64,6 +63,7 @@ namespace Scripts
                 }
 
                 Pack.Items.Remove(item);
+                sendItems.Invoke(Pack.Items);
                 return true;
             }
             return false;
@@ -74,22 +74,58 @@ namespace Scripts
         {
             Pack = ScriptableObject.CreateInstance<Backpack>();
             Pack.Items = new List<Item>();
+
             //OnItemAdd.AddListener()
+
             foreach (var item in BagConfig.Items)
             {
                 AddToBackpack(Instantiate(item));
             }
+            sendItems.Invoke(Pack.Items);
         }
 
         // Update is called once per frame
         void Update()
         {
-            sendItems.Invoke(Pack.Items);
+            Pack.Items.ForEach(x => { if (x == null) { Pack.Items.Remove(x); } });
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if(Input.GetKey(KeyCode.I))
+            {
+                sendItems.Invoke(Pack.Items);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q))
             {
                 RemoveFromBackpack();
             }
+            
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                Save();
+            }
+
+            if (Input.GetKeyDown(KeyCode.F2))
+            {
+                Load();
+                Debug.Log("BREAKPOINT");
+
+                //GetComponentInChildren<BackpackBehaviour>().Pack = BackpackLoader.Instance.LoadBackpack("BackpackSave");
+                //_backpack = GetComponentInChildren<BackpackBehaviour>().Pack;              
+            }
+        }
+
+        public void Save()
+        {
+            BackpackSaver.Instance.SaveBackpack(Pack, "BackpackSave");
+            sendItems.Invoke(Pack.Items);
+        }
+
+        public void Load()
+        {
+            var p = BackpackLoader.Instance.LoadBackpack("BackpackSave");
+            Pack.Items.ForEach(Destroy);
+            Pack.Items.AddRange(p.Items);
+            sendItems.Invoke(Pack.Items);
         }
     }
 }

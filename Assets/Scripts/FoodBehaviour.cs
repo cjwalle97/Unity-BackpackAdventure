@@ -15,7 +15,7 @@
         // Use this for initialization
         void Start()
         {
-            _other = Instantiate(FoodConfig);
+            _other = Instantiate(FoodConfig) as Food;
             OriginalScale = gameObject.transform.localScale;
         }
 
@@ -43,7 +43,7 @@
         public void OnDrop(Food other)
         {
             FoodConfig = other;
-            _other = Instantiate(FoodConfig);
+            _other = Instantiate(FoodConfig) as Food;
         }
     }
 }

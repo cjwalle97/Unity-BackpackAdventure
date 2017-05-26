@@ -15,7 +15,7 @@
         // Use this for initialization
         void Start()
         {
-            _other = Instantiate(BombConfig);
+            _other = Instantiate(BombConfig) as Bomb;
             OriginalScale = gameObject.transform.localScale;
         }
 
@@ -42,7 +42,7 @@
         public void OnDrop(Bomb other)
         {
             BombConfig = other;
-            _other = Instantiate(BombConfig);
+            _other = Instantiate(BombConfig) as Bomb;
         }
     }
 }

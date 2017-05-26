@@ -9,17 +9,19 @@ public class BackpackUIBehaviour : MonoBehaviour {
 	
 	private Text UIText;
 
-	public void UpdateBackpackUI(Item item)
-	{
-		UIText.text += item.Name + "\n";
-		//UnityEngine.Canvas.ForceUpdateCanvases();
-	}
+	
+    public void DisplayControls()
+    {
+        UIText.text = "WSAD -> Movement\n" + "Q -> Drop Item\n" + "I -> Display Items\n"; 
+    }
+
 
 	public void UpdateBackpackUI(List<Item> items)
 	{
 		UIText.text = "Items \n";
 		foreach(var item in items)
 		{
+            //Debug.Log(item);
 			UIText.text += item.Name + "\n";
 		}
 	}

@@ -15,7 +15,7 @@
         // Use this for initialization
         void Start()
         {
-            _other = Instantiate(PotionConfig);
+            _other = Instantiate(PotionConfig) as Potion;           
             //OriginalScale = gameObject.transform.localScale;
         }
         
@@ -40,7 +40,7 @@
         public void OnDrop(Potion other)
         {
             PotionConfig = other;
-            _other = Instantiate(PotionConfig);
+            _other = Instantiate(PotionConfig) as Potion;
         }
     }
 }

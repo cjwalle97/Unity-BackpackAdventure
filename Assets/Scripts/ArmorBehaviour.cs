@@ -15,7 +15,7 @@
         // Use this for initialization
         void Start()
         {
-            _other = Instantiate(ArmorConfig);
+            _other = Instantiate(ArmorConfig) as Armor;
             OriginalScale = gameObject.transform.localScale;
         }
 
@@ -44,7 +44,7 @@
         public void OnDrop(Armor other)
         {
             ArmorConfig = other;
-            _other = Instantiate(ArmorConfig);
+            _other = Instantiate(ArmorConfig) as Armor;
         }
         
     }

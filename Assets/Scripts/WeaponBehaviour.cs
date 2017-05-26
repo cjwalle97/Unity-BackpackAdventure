@@ -15,7 +15,7 @@
         // Use this for initialization
         void Start()
         {
-            _other = Instantiate(WeaponConfig);
+            _other = Instantiate(WeaponConfig) as Weapon;
             OriginalScale = gameObject.transform.localScale;
         }
 
@@ -43,7 +43,7 @@
         public void OnDrop(Weapon other)
         {
             WeaponConfig = other;
-            _other = Instantiate(WeaponConfig);
+            _other = Instantiate(WeaponConfig) as Weapon;
         }
     }
 }
