@@ -30,6 +30,8 @@ public class LootTableDataBaseEditorScript : EditorWindow {
         _window.Show();
     }
 
+
+    //NEEDS WORK
     private void OnGUI()
     {
         _header.alignment = TextAnchor.MiddleCenter;
@@ -37,6 +39,13 @@ public class LootTableDataBaseEditorScript : EditorWindow {
         GUILayout.Space(40);
         GUILayout.Label("LootTable Database", _header);
         GUILayout.Space(40);
+        string tables = "";
+        _loottables.ForEach(x =>
+        {
+            x.Drops.ForEach(z => { tables += z.item.Name + "\n"; });
+        });
+
+        GUILayout.Box(tables);
 
     }
 
