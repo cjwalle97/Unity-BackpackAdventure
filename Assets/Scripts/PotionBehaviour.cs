@@ -41,8 +41,6 @@
         {
             PotionConfig = other;
             _other = Instantiate(PotionConfig);
-            Debug.Log(other.name);
-            //gameObject.transform.localScale = OriginalScale;
         }
     }
 }

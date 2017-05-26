@@ -43,8 +43,8 @@
 
         public void OnDrop(Armor other)
         {
-            _other = Instantiate(other);
-            gameObject.transform.localScale = OriginalScale;
+            ArmorConfig = other;
+            _other = Instantiate(ArmorConfig);
         }
         
     }

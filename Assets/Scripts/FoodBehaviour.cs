@@ -42,8 +42,8 @@
 
         public void OnDrop(Food other)
         {
-            _other = Instantiate(other);
-            gameObject.transform.localScale = OriginalScale;
+            FoodConfig = other;
+            _other = Instantiate(FoodConfig);
         }
     }
 }

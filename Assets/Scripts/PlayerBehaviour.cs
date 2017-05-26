@@ -8,8 +8,6 @@ namespace Scripts
     {
 
         public Player player;
-        public float PlayerHealth;
-
         public Backpack _backpack;
 
         void Start()
@@ -20,22 +18,18 @@ namespace Scripts
         // Update is called once per frame
         void Update()
         {
-            PlayerHealth = player.Health;
             _backpack = GetComponentInChildren<BackpackBehaviour>().Pack;
 
             if (Input.GetKeyDown(KeyCode.F1))
             {
-                BackpackSaver.Instance.SaveBackpack(_backpack, player.Name);
+                BackpackSaver.Instance.SaveBackpack(_backpack, "BackpackSave");
             }
 
             if (Input.GetKeyDown(KeyCode.F2))
             {
-                GetComponentInChildren<BackpackBehaviour>().Pack = BackpackLoader.Instance.LoadBackpack("DEBUG");
-                _backpack = GetComponentInChildren<BackpackBehaviour>().Pack;
-                //Items = _backpack.Items;
-                //_backpack.Items.ForEach(x => { x = Instantiate(x); });              
+                GetComponentInChildren<BackpackBehaviour>().Pack = BackpackLoader.Instance.LoadBackpack("BackpackSave");
+                _backpack = GetComponentInChildren<BackpackBehaviour>().Pack;              
             }
-
         }
     }
 }

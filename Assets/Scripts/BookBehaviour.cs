@@ -42,8 +42,8 @@
 
         public void OnDrop(Book other)
         {
-            _other = Instantiate(other);
-            gameObject.transform.localScale = OriginalScale;
+            BookConfig = other;
+            _other = Instantiate(BookConfig);
         }
     }
 }

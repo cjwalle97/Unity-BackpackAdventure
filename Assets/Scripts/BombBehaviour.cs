@@ -41,8 +41,8 @@
 
         public void OnDrop(Bomb other)
         {
-            _other = Instantiate(other);
-            gameObject.transform.localScale = OriginalScale;
+            BombConfig = other;
+            _other = Instantiate(BombConfig);
         }
     }
 }

@@ -42,8 +42,8 @@
 
         public void OnDrop(Weapon other)
         {
-            _other = Instantiate(other);
-            gameObject.transform.localScale = OriginalScale;
+            WeaponConfig = other;
+            _other = Instantiate(WeaponConfig);
         }
     }
 }
