@@ -105,5 +105,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4960083cd32a94c95d75127f0b345e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponConfig: {fileID: 11400000, guid: 328ce363e1cdda44da8b610563d2dc32, type: 2}
+  WeaponConfig: {fileID: 0}
   _other: {fileID: 0}

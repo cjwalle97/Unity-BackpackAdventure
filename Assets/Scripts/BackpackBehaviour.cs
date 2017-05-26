@@ -1,118 +1,131 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿//Get with teammates and build out the following.
+//  - pick up items and invoke events with the item
+//  - listen for this event from the ui and populate the text field with the item name + "\n"
 
 namespace Scripts
 {
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using UnityEngine.Events;
+
     public class BackpackBehaviour : MonoBehaviour
     {
+        [System.Serializable]
+        public class OnItemAdd : UnityEvent<Item> { }
+        public OnItemAdd onItemAdd;
+
+        [System.Serializable]
+        public class OnItems : UnityEvent<List<Item>> {}
+        public OnItems sendItems;
+
         public Backpack BagConfig;
-        //private Backpack _currentconfig;
-        private Dictionary<string, List<Item>> _backpack;     
+        public Backpack Pack;
 
         public bool AddToBackpack(Item item)
         {
-            //CHECK ITEM TYPE
-            //SORT ACCORDLING
-            string itemtypekey = item.Type.ToString();
-
-            //CHECK IF BACKPACK HAS ITEM ALREADY
-            //IF NOT, ADD NEW LIST FOR THAT ITEM TYPE
-            if (_backpack.ContainsKey(itemtypekey) == false)
-            {
-                List<Item> itemlist = new List<Item>();
-                itemlist.Add(item);
-                _backpack.Add(itemtypekey, itemlist);
-                itemlist = null;
-                return true;
-            }
-
-            //IF BACKPACK HAS ITEM ALREADY, ADD ITEM TO ALREADY EXISTING ITEMLIST
-            //  - MAKE SURE ITEM IS NOT NULL
-            if (item != null)
-            {
-                _backpack[itemtypekey].Add(item);
-                return true;
-            }
-            return false;
-        }
-
-        public bool RemoveFromBackpack(string name)
-        {
-            //CHECK EACH ITEMTYPE IN BACKPACK
-            foreach (var itemtype in _backpack)
-            {
-                //CHECK EACH ITEM IN CATAGORY
-                foreach (var item in itemtype.Value)
-                {
-                    //IF MATCH, REMOVE
-                    if (item.Name == name)
-                    {
-                        string itemkey = item.GetType().ToString();
-                        string editedkey = itemkey.Remove(0, 8);
-                        Instantiate(Resources.Load("RuntimePrefabs/" + editedkey) as GameObject, transform.position, transform.rotation);                        
-                        itemtype.Value.Remove(item);
-                        return true;
-                    }
-                }
-            }
-
-            //NO MATCHES RETURN FALSE
-            return false;
-        }
-
-        private bool ChangeBackpackConfig(Backpack newconfig)
-        {
-            //_currentconfig = newconfig;
+            Pack.Items.Add(item);
+            sendItems.Invoke(Pack.Items);
             return true;
         }
 
-        private bool AddConfigToBackpack(Backpack newconfig)
+        public bool RemoveFromBackpack()
         {
-            foreach(var item in newconfig.Items)
+            foreach (var item in Pack.Items)
             {
-                AddToBackpack(item);
+                string itemkey = item.GetType().BaseType.ToString();                
+                var newItem = Instantiate(Resources.Load("RuntimePrefabs/" + itemkey), transform.position, transform.rotation) as GameObject;
+                switch(itemkey)
+                {
+                    case "Potion":
+                        newItem.GetComponent<PotionBehaviour>().OnDrop(item as Potion);
+                        break;
+
+                    case "Armor":
+                        newItem.GetComponent<ArmorBehaviour>().OnDrop(item as Armor);
+                        break;
+
+                    case "Bomb":
+                        newItem.GetComponent<BombBehaviour>().OnDrop(item as Bomb);
+                        break;
+
+                    case "Food":
+                        newItem.GetComponent<FoodBehaviour>().OnDrop(item as Food);
+                        break;
+
+                    case "Weapon":
+                        newItem.GetComponent<WeaponBehaviour>().OnDrop(item as Weapon);
+                        break;
+
+                    case "Book":
+                        newItem.GetComponent<BookBehaviour>().OnDrop(item as Book);
+                        break;
+                }
+
+                Pack.Items.Remove(item);
+                sendItems.Invoke(Pack.Items);
                 return true;
             }
             return false;
-        }
-        
-
-        private void _display_rawbackpack()
-        {
-            //-LOG ALL BACKPACK CONTENTS TO CONSOLE
-            foreach (var itemtype in _backpack)
-            {
-                foreach (var item in itemtype.Value)
-                {
-                    Debug.Log(itemtype.Key + "(" + item.Name + ")");
-                    //_currentconfig.Items.Add(item);
-                }
-            }
         }
 
         // Use this for initialization
         void Start()
         {
-            _backpack = new Dictionary<string, List<Item>>();
-            Instantiate(BagConfig);
+            Pack = ScriptableObject.CreateInstance<Backpack>();
+            Pack.Items = new List<Item>();
+
+            //OnItemAdd.AddListener()
+
             foreach (var item in BagConfig.Items)
             {
-                AddToBackpack(item);
+                AddToBackpack(Instantiate(item));
             }
+            sendItems.Invoke(Pack.Items);
         }
 
         // Update is called once per frame
         void Update()
         {
-            _display_rawbackpack();
+            Pack.Items.ForEach(x => { if (x == null) { Pack.Items.Remove(x); } });
 
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(Input.GetKey(KeyCode.I))
             {
-                RemoveFromBackpack("Health Potion");
+                sendItems.Invoke(Pack.Items);
             }
 
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                RemoveFromBackpack();
+            }
+            
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                Save();
+            }
 
+            if (Input.GetKeyDown(KeyCode.F2))
+            {
+                Load();
+                Debug.Log("BREAKPOINT");
+
+                //GetComponentInChildren<BackpackBehaviour>().Pack = BackpackLoader.Instance.LoadBackpack("BackpackSave");
+                //_backpack = GetComponentInChildren<BackpackBehaviour>().Pack;              
+            }
+        }
+
+        public void Save()
+        {
+            BackpackSaver.Instance.SaveBackpack(Pack, "BackpackSave");
+            sendItems.Invoke(Pack.Items);
+        }
+
+        public void Load()
+        {
+            var p = BackpackLoader.Instance.LoadBackpack("BackpackSave");
+            Pack.Items.ForEach(Destroy);
+            Pack.Items.AddRange(p.Items);
+            sendItems.Invoke(Pack.Items);
         }
     }
 }

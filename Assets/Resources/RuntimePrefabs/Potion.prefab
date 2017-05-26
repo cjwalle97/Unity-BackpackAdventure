@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e415f1468fd9e5b4f9bb0447c9280c32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PotionConfig: {fileID: 11400000, guid: d313a3e7c4a395a488b1321413138cfc, type: 2}
+  PotionConfig: {fileID: 0}
   _other: {fileID: 0}
 --- !u!136 &136190571280599914
 CapsuleCollider:

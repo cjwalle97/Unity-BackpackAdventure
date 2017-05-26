@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1448296fba31dbb438400c3049f1bba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArmorConfig: {fileID: 11400000, guid: 9bd5a273f0f39d04791b0b0d9fbe78cf, type: 2}
+  ArmorConfig: {fileID: 0}
   _other: {fileID: 0}
 --- !u!136 &136066037286051962
 CapsuleCollider:

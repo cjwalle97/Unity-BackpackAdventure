@@ -1,4 +1,5 @@
-﻿namespace Scripts {
+﻿namespace Scripts
+{
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
@@ -9,26 +10,37 @@
         [HideInInspector]
         public Potion _other;
 
+        //private Vector3 OriginalScale;
+
         // Use this for initialization
         void Start()
         {
-            _other = Instantiate(PotionConfig);
+            _other = Instantiate(PotionConfig) as Potion;           
+            //OriginalScale = gameObject.transform.localScale;
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
+        
         private void OnTriggerEnter(Collider col)
         {
-            if(col.tag == "Player")
+            if (col.tag == "Player")
             {
                 col.GetComponentInChildren<BackpackBehaviour>().AddToBackpack(_other);
-                Destroy(gameObject);
+                OnPickUp();
             }
         }
+        public void OnPickUp()
+        {
+            for(float size = 4.0f; size > 0.0f; size -= 0.1f)
+            {
+                gameObject.transform.localScale = new Vector3(size, size, size);
+            }
+            
+            Destroy(gameObject);
+        }
 
+        public void OnDrop(Potion other)
+        {
+            PotionConfig = other;
+            _other = Instantiate(PotionConfig) as Potion;
+        }
     }
 }
