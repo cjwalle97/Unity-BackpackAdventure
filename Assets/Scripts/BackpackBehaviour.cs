@@ -11,13 +11,13 @@ namespace Scripts
 
     public class BackpackBehaviour : MonoBehaviour
     {
-        [System.Serializable]
-        public class OnItemAdd : UnityEvent<Item> { }
-        public OnItemAdd onItemAdd;
-
+        
+        
         [System.Serializable]
         public class OnItems : UnityEvent<List<Item>> {}
         public OnItems sendItems;
+
+        public static UnityEvent OnPackChange = new UnityEvent();
 
         public Backpack BagConfig;
         public Backpack Pack;
@@ -26,6 +26,7 @@ namespace Scripts
         {
             Pack.Items.Add(item);
             sendItems.Invoke(Pack.Items);
+            OnPackChange.Invoke();
             return true;
         }
 
@@ -64,6 +65,7 @@ namespace Scripts
 
                 Pack.Items.Remove(item);
                 sendItems.Invoke(Pack.Items);
+                OnPackChange.Invoke();
                 return true;
             }
             return false;
