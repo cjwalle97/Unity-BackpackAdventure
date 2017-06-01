@@ -101,19 +101,19 @@ namespace Scripts
                 RemoveFromBackpack();
             }
             
-            if (Input.GetKeyDown(KeyCode.F1))
-            {
-                Save();
-            }
+            //if (Input.GetKeyDown(KeyCode.F1))
+            //{
+            //    Save();
+            //}
 
-            if (Input.GetKeyDown(KeyCode.F2))
-            {
-                Load();
-                Debug.Log("BREAKPOINT");
+            //if (Input.GetKeyDown(KeyCode.F2))
+            //{
+            //    Load();
+            //    Debug.Log("BREAKPOINT");
 
-                //GetComponentInChildren<BackpackBehaviour>().Pack = BackpackLoader.Instance.LoadBackpack("BackpackSave");
-                //_backpack = GetComponentInChildren<BackpackBehaviour>().Pack;              
-            }
+            //    //GetComponentInChildren<BackpackBehaviour>().Pack = BackpackLoader.Instance.LoadBackpack("BackpackSave");
+            //    //_backpack = GetComponentInChildren<BackpackBehaviour>().Pack;              
+            //}
         }
 
         public void Save()
