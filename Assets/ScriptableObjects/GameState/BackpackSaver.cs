@@ -9,7 +9,7 @@ using UnityEngine;
 public class BackpackSaver : ScriptableObject {
 
 
-    private static BackpackSaver _instance;
+    private static BackpackSaver _instance;   
 
     public static BackpackSaver Instance
     {
@@ -19,11 +19,11 @@ public class BackpackSaver : ScriptableObject {
 
             if (!_instance)
             {
-                _instance = Resources.FindObjectsOfTypeAll<BackpackSaver>().FirstOrDefault();                
+                _instance = Resources.FindObjectsOfTypeAll<BackpackSaver>().FirstOrDefault();                               
             }
 
             if (!_instance) { _instance = CreateInstance<BackpackSaver>(); }
-
+            
             return _instance;
 
         }
@@ -33,7 +33,7 @@ public class BackpackSaver : ScriptableObject {
 
     public void SaveBackpack(Backpack backpack, string filename)
     {
-        var json = JsonUtility.ToJson(backpack);
+        var json = JsonUtility.ToJson(backpack, true);
         var path = Application.dataPath + "/StreamingAssets/" + filename + ".json";
 
         File.WriteAllText(path, json);
