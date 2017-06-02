@@ -7,8 +7,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName ="Backpack Saver", menuName = "GameState/Savers/BackpackSaver")]
 public class BackpackSaver : ScriptableObject {
-
-
+    
     private static BackpackSaver _instance;   
 
     public static BackpackSaver Instance
@@ -16,7 +15,6 @@ public class BackpackSaver : ScriptableObject {
 
         get
         {
-
             if (!_instance)
             {
                 _instance = Resources.FindObjectsOfTypeAll<BackpackSaver>().FirstOrDefault();                               

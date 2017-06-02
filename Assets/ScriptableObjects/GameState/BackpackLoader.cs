@@ -38,5 +38,4 @@ public class BackpackLoader : ScriptableObject {
         //  - AFTER SHUTDOWN AND RESTART, 'backpack' RETURNS NULL ITEMS
         return backpack;
     }
-
 }
