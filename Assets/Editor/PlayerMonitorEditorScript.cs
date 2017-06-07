@@ -23,16 +23,13 @@ namespace Scripts
 
         void OnEnable()
         {
-            Debug.Log("add listener");
             EditorApplication.playmodeStateChanged += Init;
         }
 
         void OnDisable()
         {
-            Debug.Log("remove listener");
             EditorApplication.playmodeStateChanged -= Init;
         }
-
 
         [MenuItem("Tools/Player Monitor %g")]
         static void Init()
@@ -50,7 +47,7 @@ namespace Scripts
         {
             PlayerMovementBehaviour.OnPlayerMoved.RemoveListener(_window.Repaint);
         }
-        ////NEEDS WORK
+        
         private void OnGUI()
         {
             string items = "";
@@ -69,13 +66,22 @@ namespace Scripts
             if(_backpack != null)
                 _backpack.Items.ForEach(x => { items += x.Name + "\n"; });
             GUILayout.Space(20);
-            GUILayout.Box(items);            
+            GUILayout.Box(items);
+
+            GUILayout.Space(10);
+            if(GUILayout.Button("Clear Items"))
+            {
+                List<Item> tmp = new List<Item>();
+                _backpack.Items.ForEach(Destroy);
+                _player.GetComponentInChildren<BackpackBehaviour>().sendItems.Invoke(tmp);
+                tmp = null;                                
+            }
+
+            GUILayout.Space(20);
+            
             
             _backpack = _playertransform.GetComponentInChildren<BackpackBehaviour>().Pack;
             _player = _playertransform.GetComponent<PlayerBehaviour>();
         }
-
-
-
     }
 }

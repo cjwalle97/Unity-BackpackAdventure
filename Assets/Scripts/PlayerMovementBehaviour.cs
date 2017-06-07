@@ -5,9 +5,8 @@ using UnityEngine.Events;
 
 public class PlayerMovementBehaviour : MonoBehaviour
 {
-
     public float _speed = 25f;
-    // Update is called once per frame
+        
     void Update()
     {
         var oldpos = transform.localPosition;
@@ -20,5 +19,4 @@ public class PlayerMovementBehaviour : MonoBehaviour
     }
 
     public static UnityEvent OnPlayerMoved = new UnityEvent();
-       
 }

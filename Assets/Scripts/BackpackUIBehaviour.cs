@@ -5,16 +5,14 @@ using UnityEngine.UI;
 
 public class BackpackUIBehaviour : MonoBehaviour {
 
-	//update the canvas with info from backpack	
+	//update the canvas with info from backpack
 	
 	private Text UIText;
-
 	
     public void DisplayControls()
     {
         UIText.text = "WSAD -> Movement\n" + "Q -> Drop Item\n" + "I -> Display Items\n"; 
     }
-
 
 	public void UpdateBackpackUI(List<Item> items)
 	{
@@ -29,7 +27,6 @@ public class BackpackUIBehaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		UIText = GetComponentInChildren<Text>();		
-		//GetComponentInChildren<Text>().text = "STARTUP";
+		UIText = GetComponentInChildren<Text>();
 	}
 }
