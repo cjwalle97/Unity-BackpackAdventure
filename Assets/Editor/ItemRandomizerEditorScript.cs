@@ -10,18 +10,20 @@ using UnityEngine.UI;
 using UnityEditor;
 #endif
 
-namespace ScriptableObjects
+namespace Assets.Editor
 {
-    public class ItemEditorScript : EditorWindow
+    public class ItemRandomizerEditorScript : EditorWindow
     {
+        private UnityEngine.Object[] items;
         private Item _item;
         private GUIStyle _header = new GUIStyle();
         private List<Item> _itemList = new List<Item>();
+        private bool DisplayText;
 
-        [MenuItem("Tools/ItemEditor")]
+        [MenuItem("Tools/ItemRandomizer")]
         static void Init()
         {
-            var window = EditorWindow.GetWindow(typeof(ItemEditorScript)) as ItemEditorScript;
+            var window = EditorWindow.GetWindow(typeof(ItemRandomizerEditorScript)) as ItemRandomizerEditorScript;
             if (window == null) return;
             window._item = CreateInstance<Item>();
             window.Show();
@@ -30,12 +32,15 @@ namespace ScriptableObjects
 
         private void OnGUI()
         {
-            if(GUILayout.Button("Random Item"))
+            items = Resources.LoadAll("ItemsforRandomizer", typeof(Item));
+            if (GUILayout.Button("Random Item"))
             {
+                _item = (Item)items[UnityEngine.Random.Range(0, items.Length)];
                 Debug.Log("Randomized Item");
-                Debug.Log(_item.Name);
+                Debug.Log(_item.Name);                
             }
-        }
-
+            if(_item != null)
+                GUILayout.Label(_item.Name);
+        }        
     }
 }
